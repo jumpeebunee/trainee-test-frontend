@@ -12,6 +12,8 @@ const MainPage = () => {
 
     const [totalUsers, setTotalUsers] = useState([]);
     const {users, setlAllUsers} = useContext(getAllUsers);
+    const [selectedFilter, setSelectedFilter] = useState('all');
+    const [selectedSort, setSelectedSort] = useState('firstName');
     const [modal, setModal] = useState(false);
 
     const userDep = {
@@ -29,6 +31,15 @@ const MainPage = () => {
         analytics: 'Аналитика',
     };
 
+    const departments = [
+        {title: 'Все', value: 'all', id: 1},
+        {title: 'Designers', value: 'design', id: 2},
+        {title: 'Analysts', value: 'analytics', id: 3},
+        {title: 'Managers', value: 'management', id: 4},
+        {title: 'IOS', value: 'ios', id: 5},
+        {title: 'Android', value: 'android', id: 6},
+    ];
+
     const [fetchUsers, isLoading, isError] = useFetching(async () => {
         const response = await UsersService.getAll();
         setTotalUsers(response.items);
@@ -40,11 +51,17 @@ const MainPage = () => {
 
     return (
         <div className="container">
-            <Navigation setModal={setModal}>
-            </Navigation>
+            <Navigation 
+                setModal={setModal}
+                departments={departments}
+                selectedFilter={selectedFilter}
+                setSelectedFilter={setSelectedFilter}
+            ></Navigation>
             <Modal
                 setVisible={setModal}
                 visible={modal}
+                selectedSort={selectedSort}
+                setSelectedSort={setSelectedSort}
             ></Modal>
             { isLoading ? <LoadingList /> : <UserList users={totalUsers} userDep={userDep}/>}
         </div>
