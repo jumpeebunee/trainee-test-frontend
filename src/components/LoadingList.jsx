@@ -1,5 +1,5 @@
 import React from "react";
-import LoadingUsers from "../components/UI/LoadingUsers";
+import LoadingUsers from "./UI/LoadingUsers/LoadingUsers";
 
 const LoadingList = () => {
     return (

@@ -2,11 +2,11 @@ import React from "react";
 import Searchbar from "./Searchbar";
 import SortButtons from "./SortButtons";
 
-const Navigation = () => {
+const Navigation = ({setModal}) => {
     return (
         <div className="app-navigation">
             <h2 className="app-navigation__heading">Поиск</h2>
-            <Searchbar></Searchbar>
+            <Searchbar setModal={setModal}></Searchbar>
             <SortButtons></SortButtons>
         </div>
     );

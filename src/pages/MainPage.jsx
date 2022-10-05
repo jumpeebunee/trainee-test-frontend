@@ -6,11 +6,13 @@ import UsersService from "../API/UsersService";
 import Navigation from "../components/Navigation";
 import UserList from "../components/UsersList";
 import LoadingList from "../components/LoadingList";
+import Modal from "../components/UI/Modal/Modal";
 
 const MainPage = () => {
 
     const [totalUsers, setTotalUsers] = useState([]);
     const {users, setlAllUsers} = useContext(getAllUsers);
+    const [modal, setModal] = useState(false);
 
     const userDep = {
         android: 'Android',
@@ -38,8 +40,12 @@ const MainPage = () => {
 
     return (
         <div className="container">
-            <Navigation>
+            <Navigation setModal={setModal}>
             </Navigation>
+            <Modal
+                setVisible={setModal}
+                visible={modal}
+            ></Modal>
             { isLoading ? <LoadingList /> : <UserList users={totalUsers} userDep={userDep}/>}
         </div>
     );
