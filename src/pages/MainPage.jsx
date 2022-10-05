@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { getAllUsers } from "../context";
 import { useFetching } from "../hooks/useFetching";
 import UsersService from "../API/UsersService";
@@ -43,11 +43,18 @@ const MainPage = () => {
     const [fetchUsers, isLoading, isError] = useFetching(async () => {
         const response = await UsersService.getAll();
         setTotalUsers(response.items);
+        let a = filteredUsers();
+        console.log(a)
     });
 
     useEffect(() => {
         (users === false) ? fetchUsers() : setlAllUsers(totalUsers);
     }, []);
+
+    const filteredUsers = useMemo(() => {
+        if (selectedFilter === 'all') return totalUsers;
+        return [...totalUsers].filter(prop => prop.department === selectedFilter);
+    }, [selectedFilter, totalUsers]);
 
     return (
         <div className="container">
@@ -63,7 +70,7 @@ const MainPage = () => {
                 selectedSort={selectedSort}
                 setSelectedSort={setSelectedSort}
             ></Modal>
-            { isLoading ? <LoadingList /> : <UserList users={totalUsers} userDep={userDep}/>}
+            { isLoading ? <LoadingList /> : <UserList users={filteredUsers} userDep={userDep}/>}
         </div>
     );
 };

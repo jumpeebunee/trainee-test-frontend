@@ -79,7 +79,7 @@ body {
 
 .app-list {
   overflow-y: scroll;
-  height: 596px;
+  height: 564px;
 }
 
 .app-list__item {
