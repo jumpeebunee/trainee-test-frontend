@@ -1,14 +1,20 @@
 import React from "react";
 import UserItem from "./UserItem";
 import ErrorFind from "./UI/ErrorFind/ErrorFind";
+import ErrorMessage from "./UI/ErrorMessage/ErrorMessage";
 
-const UserList = ({users, userDep, selectedSort, birthdayInYear}) => {
+const UserList = ({users, userDep, selectedSort, birthdayInYear, isError, fetchUsers}) => {
+    if (isError) {
+        return (
+            <ErrorMessage fetchUsers={fetchUsers}/>
+        );
+    };
 
     if (users.length === 0) {
         return (
            <ErrorFind/>
         )
-    }
+    };
 
     return (
         <ul className="app-list">

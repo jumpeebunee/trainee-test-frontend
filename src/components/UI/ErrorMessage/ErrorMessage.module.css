@@ -1,0 +1,39 @@
+.errorMessageActive {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 133px;
+    padding-bottom: 133px;
+}
+
+.errorMessageImg {
+    display: block;
+    width: 56px;
+    height: 56px;
+}
+
+.errorMessageHeading {
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 22px;
+    color: #050510;
+}
+
+.errorMessageDescription {
+    margin-top: 12px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #97979B;
+}
+
+.errorMessageButton {
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #6534FF;
+    background-color: transparent;
+}

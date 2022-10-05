@@ -7,6 +7,7 @@ import Navigation from "../components/Navigation";
 import UserList from "../components/UsersList";
 import LoadingList from "../components/LoadingList";
 import Modal from "../components/UI/Modal/Modal";
+import ErrorMessage from "../components/UI/ErrorMessage/ErrorMessage";
 
 const MainPage = () => {
 
@@ -124,6 +125,8 @@ const MainPage = () => {
             { isLoading 
                 ? <LoadingList/>
                 : <UserList 
+                    isError={isError}
+                    fetchUsers={fetchUsers}
                     users={sortedUsers}
                     selectedSort={selectedSort}
                     userDep={userDep}
