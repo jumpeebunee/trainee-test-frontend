@@ -1,1 +1,77 @@
-/*# sourceMappingURL=style.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap");
+* {
+  font-family: Inter;
+  color: #050510;
+}
+
+body {
+  background-color: #E5E5E5;
+}
+
+.app {
+  max-width: 1278px;
+  height: 720px;
+  padding: 20px 15px;
+  margin: 100px auto 0 auto;
+  background-color: #fff;
+}
+
+.app-navigation {
+  margin-bottom: 16px;
+}
+.app-navigation h2 {
+  padding: 8px 0px 12px 8px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.app-searchbar {
+  display: flex;
+  padding: 8px 12px;
+  background-color: #F7F7F8;
+  border-radius: 16px;
+}
+
+.app-searchbar__input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.app-searchbar__input-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.app-searchbar__input-main {
+  width: 100%;
+  height: 20px;
+  margin-left: 8px;
+  background-color: transparent;
+}
+.app-searchbar__input-main::-moz-placeholder {
+  color: #C3C3C6;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+}
+.app-searchbar__input-main:-ms-input-placeholder {
+  color: #C3C3C6;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+}
+.app-searchbar__input-main::placeholder {
+  color: #C3C3C6;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+}/*# sourceMappingURL=style.css.map */
