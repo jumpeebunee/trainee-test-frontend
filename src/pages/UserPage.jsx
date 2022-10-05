@@ -2,10 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAllUsers } from "../context";
 import UserProfile from "../components/UserProfile";
+import UserInfoList from "../components/UserInfoList"
 import departments from "../data/departments"
 import back from '../img/back.svg';
-import birthday from '../img/birthday.svg';
-import phone from '../img/phone.svg'
 
 const UserPage = () => {
 
@@ -14,21 +13,37 @@ const UserPage = () => {
     const [user, setUser] = useState([]);
     const [userInfo, setUserInfo] = useState({age: '', phone: '', birthday: ''});
 
-    const declaration = ['год', 'года', 'лет'];
-    const cases = [2, 0, 1, 1, 1, 2];  
+    const mouthOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+    const yearsDeclaration = ['год', 'года', 'лет'];
+    const yearCases = [2, 0, 1, 1, 1, 2];  
 
-    const getUserBirthday = () => {
-        const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    const phoneFormat = (phone) => {
+        let result = '';
+        if (phone) {
+            for (let i = 0; i < phone.length; i++) {
+                if (i === 2) result += ' (';
+                if (i === 5) result += ') ';
+                if (i === 8 || i === 10) result += ' ';
+                result += phone[i];
+            };
+        };
+        return result;
+    };
+
+    const getUserInfo = () => {
         const date = new Date(user.birthday);
-        let age = new Date().getFullYear() - date.getFullYear();
-        let caseAge = (age % 100 > 4 && age % 100 < 20) ? 2 : cases[(age%10<5)?age%10:5];
+        let userAge = new Date().getFullYear() - date.getFullYear();
+        let caseAge = (userAge % 100 > 4 && userAge % 100 < 20) ? 2 : yearCases[(userAge % 10 < 5) ? userAge % 10 : 5];
+        let phoneNumber = phoneFormat(user.phone);
 
-        setUserInfo(
+        setUserInfo (
             {
                 ...userInfo,
-                birthday: date.toLocaleDateString('ru-RU', options).slice(0, -2),
-                age: age.toString() + ` ${declaration[caseAge]}`
-            });
+                birthday: date.toLocaleDateString('ru-RU', mouthOptions).slice(0, -2),
+                age: userAge.toString() + ` ${yearsDeclaration[caseAge]}`,
+                phone: phoneNumber,
+            }
+        );
     };
 
     useEffect(() => {
@@ -36,7 +51,7 @@ const UserPage = () => {
         if (users) {
             currentUser = users.find(user => user.id === userId);
             setUser(currentUser);
-            getUserBirthday();
+            getUserInfo();
         };
     }, [users, user])
 
@@ -63,21 +78,11 @@ const UserPage = () => {
             </div>
             <div className="user-page__info">
                 <div className="container">
-                    <ul className="user-page__list">
-                        <li>
-                            <div className="user-page__list-info">
-                                <span style={{backgroundImage: `url(${birthday})`}}></span>
-                                <div>{userInfo.birthday}</div>
-                            </div>
-                            <div className="user-page__list-age">{userInfo.age}</div>
-                        </li>
-                        <li>
-                            <div className="user-page__list-info">
-                                <span style={{backgroundImage: `url(${phone})`}}></span>
-                                <div>+7 (999) 900 90 90</div>
-                            </div>
-                        </li>
-                    </ul>
+                    <UserInfoList 
+                        age={userInfo.age}
+                        birthday={userInfo.birthday}
+                        phone={userInfo.phone}
+                    ></UserInfoList>
                 </div>
             </div>
         </div>

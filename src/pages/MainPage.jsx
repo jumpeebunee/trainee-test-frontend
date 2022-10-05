@@ -3,6 +3,7 @@ import { useContext, useMemo } from "react";
 import { getAllUsers } from "../context";
 import { useFetching } from "../hooks/useFetching";
 import departments from "../data/departments";
+import departmentsType from "../data/departmentsType";
 import UsersService from "../API/UsersService";
 import Navigation from "../components/Navigation";
 import UserList from "../components/UsersList";
@@ -18,15 +19,6 @@ const MainPage = () => {
     const [selectedFilter, setSelectedFilter] = useState('all');
     const [selectedSort, setSelectedSort] = useState('firstName');
     const [searchQuery, setSearchQuery] = useState('');
-
-    const departmentsType = [
-        {title: 'Все', value: 'all', id: 1},
-        {title: 'Designers', value: 'design', id: 2},
-        {title: 'Analysts', value: 'analytics', id: 3},
-        {title: 'Managers', value: 'management', id: 4},
-        {title: 'IOS', value: 'ios', id: 5},
-        {title: 'Android', value: 'android', id: 6},
-    ];
 
     const [fetchUsers, isLoading, isError] = useFetching(async () => {
         const response = await UsersService.getAll();
