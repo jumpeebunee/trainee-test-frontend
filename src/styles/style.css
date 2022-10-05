@@ -291,6 +291,177 @@ body {
   background-size: contain;
 }
 
+.user-profile__job {
+  font-size: 13px;
+  line-height: 16px;
+  color: #55555C;
+}
+
 .user-page__list-age {
   color: #97979B;
+}
+
+@media (max-width: 500px) {
+  .app-navigation__list .active {
+    font-weight: 500;
+  }
+  .app-navigation__list button {
+    padding: 4px 5px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 341px) {
+  .app {
+    max-width: 1278px;
+    height: 211.14vw;
+    margin: 100px auto 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 5.87vw;
+    position: relative;
+  }
+  .container {
+    padding: 5.87vw 4.4vw;
+  }
+  .app-navigation {
+    margin-bottom: 4.69vw;
+  }
+  .app-navigation h2 {
+    padding: 2.35vw 0px 12px 2.35vw;
+    font-size: 7.04vw;
+    line-height: 8.21vw;
+  }
+  .app-searchbar {
+    padding: 2.35vw 12px;
+    border-radius: 4.69vw;
+  }
+  .app-searchbar__input {
+    font-size: 4.4vw;
+    line-height: 5.87vw;
+  }
+  .app-searchbar__input-icon {
+    width: 7.04vw;
+    height: 7.04vw;
+  }
+  .app-searchbar__input-main {
+    height: 5.87vw;
+    margin-left: 2.35vw;
+  }
+  .app-searchbar__input-main::-moz-placeholder {
+    font-size: 4.4vw;
+    line-height: 5.87vw;
+  }
+  .app-searchbar__input-main:-ms-input-placeholder {
+    font-size: 4.4vw;
+    line-height: 5.87vw;
+  }
+  .app-searchbar__input-main::placeholder {
+    font-size: 4.4vw;
+    line-height: 5.87vw;
+  }
+  .app-list {
+    height: 164.22vw;
+  }
+  .app-list__item {
+    margin-bottom: 1.17vw;
+  }
+  .app-list__link {
+    padding: 1.76vw 0px;
+  }
+  .app-list__content img {
+    width: 21.11vw;
+    height: 21.11vw;
+    margin-right: 4.69vw;
+  }
+  .app-list__content-user strong {
+    margin-right: 1.17vw;
+    font-size: 4.69vw;
+    line-height: 5.87vw;
+  }
+  .app-list__content-user span {
+    font-size: 4.11vw;
+    line-height: 5.28vw;
+  }
+  .app-list__user-department {
+    font-size: 3.81vw;
+    line-height: 4.69vw;
+  }
+  .app-navigation__list .active::after {
+    height: 0.59vw;
+  }
+  .app-navigation__list button {
+    padding: 1.17vw 3.52vw;
+    font-size: 4.4vw;
+    line-height: 5.87vw;
+  }
+  .app-list__birthday_active {
+    font-size: 4.4vw;
+    line-height: 5.87vw;
+  }
+  .app-list__birth-next {
+    margin: 1.17vw 0px;
+    padding: 7.04vw 0px;
+  }
+  .app-list__birth-line {
+    max-width: 148.97vw;
+    height: 0.29vw;
+  }
+  .app-list__birth-year {
+    font-size: 4.4vw;
+    line-height: 5.87vw;
+  }
+  .user-page__header-container {
+    padding: 9.38vw 9.38vw 7.04vw 6.74vw;
+  }
+  .user-page__header-link {
+    margin-bottom: 9.68vw;
+  }
+  .user-page__back {
+    width: 4.4vw;
+    height: 3.23vw;
+    background-size: contain;
+  }
+  .user-profile img {
+    width: 30.5vw;
+    height: 30.5vw;
+  }
+  .user-profile__name {
+    margin-top: 7.04vw;
+  }
+  .user-profile__name h3 {
+    margin-right: 1.17vw;
+    font-size: 7.04vw;
+    line-height: 8.21vw;
+  }
+  .user-profile__name span {
+    font-size: 4.99vw;
+    line-height: 6.45vw;
+  }
+  .user-profile-job {
+    margin-top: 3.52vw;
+    font-size: 3.81vw;
+    line-height: 4.69vw;
+  }
+  .user-loading {
+    font-size: 4.99vw;
+    line-height: 6.45vw;
+  }
+  .user-page__list li:not(:last-child) {
+    margin-bottom: 7.04vw;
+  }
+  .user-profile__job {
+    font-size: 3.81vw;
+    line-height: 4.69vw;
+  }
+  .user-page__list-info {
+    font-size: 4.69vw;
+    line-height: 5.87vw;
+  }
+  .user-page__list-info span {
+    width: 7.04vw;
+    height: 7.04vw;
+    margin-right: 4.11vw;
+  }
 }/*# sourceMappingURL=style.css.map */

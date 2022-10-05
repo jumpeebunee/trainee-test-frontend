@@ -44,6 +44,8 @@ const MainPage = () => {
     }, [searchQuery, filteredUsers]);
 
     const sortedUsers = useMemo(() => {
+        setModal(false);
+
         function getDate(a,b) {
             let dateA = new Date(a['birthday']);
             let dateB = new Date(b['birthday']); 
@@ -54,7 +56,7 @@ const MainPage = () => {
                 b,
             };
         };
-        setModal(false);
+
         if (selectedSort === 'firstName') {
             return [...sortedAndSearchedUsers].sort((a,b) => a[selectedSort].localeCompare(b[selectedSort]));
         } else if (selectedSort === 'birthday') {
@@ -65,7 +67,7 @@ const MainPage = () => {
                 date = new Date(2022, date.getMonth(), date.getDate());
                 if (Math.sign(date[Symbol.toPrimitive]('number') - Date.now()) === 1) inThis.push(item);
                 if (Math.sign(date[Symbol.toPrimitive]('number') - Date.now()) === -1) inNext.push(item);
-            })
+            });
             inThis.sort((a,b) => {
                 let dates = getDate(a,b);
                 a = dates.a;
@@ -80,7 +82,8 @@ const MainPage = () => {
             });
             setBirthday(inThis.length);
             return [...inThis, ...inNext];
-        }
+        };
+        
     }, [selectedSort, sortedAndSearchedUsers]);
 
     return (
