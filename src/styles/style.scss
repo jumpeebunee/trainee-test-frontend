@@ -9,6 +9,10 @@ body {
     background-color: #E5E5E5;
 }
 
+::-webkit-scrollbar {
+    width: 0;
+}
+
 .app {
     max-width: 1278px;
     height: 720px;
@@ -185,4 +189,58 @@ body {
     font-size: 15px;
     line-height: 20px;
     color: #C3C3C6;
+}
+
+.user-page__header {
+    padding: 8px 32px 0px 32px;
+}
+
+.user-page__back {
+    display: block;
+    width: 15px;
+    height: 11px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 104px;
+        height: 104px;
+        border-radius: 50%;
+    }
+}
+
+.user-profile__name {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+
+    h3 {
+        margin-right: 4px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+        color: #050510;
+    }
+
+    span {
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 22px;
+        color: #97979B;
+    }
+}
+
+.user-profile-job {
+    margin-top: 12px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #55555C;
 }

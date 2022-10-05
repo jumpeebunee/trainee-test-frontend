@@ -2,12 +2,12 @@ import React, {useState, useEffect} from "react";
 import { useContext, useMemo } from "react";
 import { getAllUsers } from "../context";
 import { useFetching } from "../hooks/useFetching";
+import departments from "../data/departments";
 import UsersService from "../API/UsersService";
 import Navigation from "../components/Navigation";
 import UserList from "../components/UsersList";
 import LoadingList from "../components/LoadingList";
 import Modal from "../components/UI/Modal/Modal";
-import ErrorMessage from "../components/UI/ErrorMessage/ErrorMessage";
 
 const MainPage = () => {
 
@@ -19,22 +19,7 @@ const MainPage = () => {
     const [selectedSort, setSelectedSort] = useState('firstName');
     const [searchQuery, setSearchQuery] = useState('');
 
-    const userDep = {
-        android: 'Android',
-        ios: 'iOS',
-        design: 'Дизайн',
-        management: 'Менеджмент',
-        qa: 'QA',
-        back_office: 'Бэк-офис',
-        frontend: 'Frontend',
-        hr: 'HR',
-        pr: 'PR',
-        backend: 'Backend',
-        support: 'Техподдержка',
-        analytics: 'Аналитика',
-    };
-
-    const departments = [
+    const departmentsType = [
         {title: 'Все', value: 'all', id: 1},
         {title: 'Designers', value: 'design', id: 2},
         {title: 'Analysts', value: 'analytics', id: 3},
@@ -49,7 +34,7 @@ const MainPage = () => {
     });
 
     useEffect(() => {
-        (users === false) ? fetchUsers() : setlAllUsers(totalUsers);
+        (users === false) ? fetchUsers() : setTotalUsers(users);
     }, []);
 
     const filteredUsers = useMemo(() => {
@@ -110,7 +95,7 @@ const MainPage = () => {
         <div className="container">
             <Navigation 
                 setModal={setModal}
-                departments={departments}
+                departments={departmentsType}
                 selectedFilter={selectedFilter}
                 setSelectedFilter={setSelectedFilter}
                 searchQuery={searchQuery}
@@ -129,7 +114,7 @@ const MainPage = () => {
                     fetchUsers={fetchUsers}
                     users={sortedUsers}
                     selectedSort={selectedSort}
-                    userDep={userDep}
+                    userDep={departments}
                     birthdayInYear={birthdayInYear}
                 />
             }

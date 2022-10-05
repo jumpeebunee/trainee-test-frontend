@@ -8,7 +8,7 @@ const UserItem = ({selectedSort, user, birthdayInYear, image, index, id, firstNa
     return (
         <li className="app-list__item">
             <div>
-                <Link className="app-list__link">
+                <Link to={'user/' + id} className="app-list__link">
                     <div className="app-list__content">
                         <img src={image + `&t=${id}`} className="app-list__img"/>
                         <div>
