@@ -287,6 +287,8 @@ body {
   width: 24px;
   height: 24px;
   margin-right: 14px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .user-page__list-age {
