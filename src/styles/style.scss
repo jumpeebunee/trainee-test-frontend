@@ -16,11 +16,15 @@ body {
 .app {
     max-width: 1278px;
     height: 720px;
-    padding: 20px 15px;
     margin: 100px auto 0 auto;
     background-color: #fff;
     overflow: hidden;
     border-radius: 20px;
+    position: relative;
+}
+
+.container {
+    padding: 20px 15px;
 }
 
 .app-navigation {
@@ -192,7 +196,15 @@ body {
 }
 
 .user-page__header {
-    padding: 8px 32px 0px 32px;
+    background-color: #F7F7F8;
+}
+
+.user-page__header-container {
+   padding: 32px 32px 24px 23px;
+}
+
+.user-page__header-link {
+    margin-bottom: 33px;
 }
 
 .user-page__back {
@@ -243,4 +255,45 @@ body {
     font-size: 13px;
     line-height: 16px;
     color: #55555C;
+}
+
+.user-loading {
+    position: absolute;
+    transform:  translate(50%, 50%);
+    right: 50%;
+    bottom: 50%;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 22px;
+}
+
+.user-page__list {
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+ 
+        &:not(:last-child) {
+            margin-bottom: 24px;
+        }
+    }
+}
+
+.user-page__list-info {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+
+    span {
+        display: block;
+        width: 24px;
+        height: 24px;
+        margin-right: 14px;
+    }
+}
+
+.user-page__list-age {
+    color: #97979B;
 }

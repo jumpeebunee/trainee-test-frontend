@@ -21,22 +21,43 @@ const UserPage = () => {
 
     if (!users) {
         return (
-            <div>Загрузка</div>
+            <div className="user-loading">Загрузка пользователя...</div>
         );
     };
 
     return (
         <div className="user-page">
             <div className="user-page__header">
-                <div>
-                    <Link to="/"><button className="user-page__back" style={{backgroundImage: `url(${back})`}}></button></Link>
+                <div className="user-page__header-container container">
+                    <div className="user-page__header-link">
+                        <Link to="/"><button className="user-page__back" style={{backgroundImage: `url(${back})`}}></button></Link>
+                    </div>
+                    <UserProfile 
+                        username={user.firstName + ' ' + user.lastName}
+                        tag={user.userTag === 'string' ? '' : user.userTag}
+                        department={departments[user.department]}
+                        image={user.avatarUrl + `&t=${user.id}`}
+                    ></UserProfile>
                 </div>
-                <UserProfile 
-                    username={user.firstName + ' ' + user.lastName}
-                    tag={user.userTag === 'string' ? '' : user.userTag}
-                    department={departments[user.department]}
-                    image={user.avatarUrl + `&t=${user.id}`}
-                ></UserProfile>
+            </div>
+            <div className="user-page__info">
+                <div className="container">
+                    <ul className="user-page__list">
+                        <li>
+                            <div className="user-page__list-info">
+                                <span></span>
+                                <div>5 июня 1996</div>
+                            </div>
+                            <div className="user-page__list-age">24 года</div>
+                        </li>
+                        <li>
+                            <div className="user-page__list-info">
+                                <span></span>
+                                <div>+7 (999) 900 90 90</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     );
