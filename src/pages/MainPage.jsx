@@ -13,6 +13,7 @@ const MainPage = () => {
     const [totalUsers, setTotalUsers] = useState([]);
     const {users, setlAllUsers} = useContext(getAllUsers);
     const [modal, setModal] = useState(false);
+    const [birthdayInYear, setBirthday] = useState(0);
     const [selectedFilter, setSelectedFilter] = useState('all');
     const [selectedSort, setSelectedSort] = useState('firstName');
     const [searchQuery, setSearchQuery] = useState('');
@@ -44,8 +45,6 @@ const MainPage = () => {
     const [fetchUsers, isLoading, isError] = useFetching(async () => {
         const response = await UsersService.getAll();
         setTotalUsers(response.items);
-        let a = filteredUsers();
-        console.log(a)
     });
 
     useEffect(() => {
@@ -64,7 +63,47 @@ const MainPage = () => {
             let userTag = user.userTag.toLowerCase().includes(searchQuery.toLowerCase());
             return (firstName) ? firstName : (lastName) ? lastName : userTag;
         });
-    }, [searchQuery, filteredUsers])
+    }, [searchQuery, filteredUsers]);
+
+    const sortedUsers = useMemo(() => {
+        function getDate(a,b) {
+            let dateA = new Date(a['birthday']);
+            let dateB = new Date(b['birthday']); 
+            a = new Date(2022, dateA.getMonth(), dateA.getDate());
+            b = new Date(2022, dateB.getMonth(), dateB.getDate());
+            return {
+                a,
+                b,
+            };
+        };
+        setModal(false);
+        if (selectedSort === 'firstName') {
+            return [...sortedAndSearchedUsers].sort((a,b) => a[selectedSort].localeCompare(b[selectedSort]));
+        } else if (selectedSort === 'birthday') {
+            let inThis = [];
+            let inNext = [];
+            sortedAndSearchedUsers.map(item => {
+                let date = new Date(item['birthday'])
+                date = new Date(2022, date.getMonth(), date.getDate());
+                if (Math.sign(date[Symbol.toPrimitive]('number') - Date.now()) === 1) inThis.push(item);
+                if (Math.sign(date[Symbol.toPrimitive]('number') - Date.now()) === -1) inNext.push(item);
+            })
+            inThis.sort((a,b) => {
+                let dates = getDate(a,b);
+                a = dates.a;
+                b = dates.b;
+                return a[Symbol.toPrimitive]('number') - b[Symbol.toPrimitive]('number');
+            });
+            inNext.sort((a,b) => {
+                let dates = getDate(a,b);
+                a = dates.a;
+                b = dates.b;
+                return a[Symbol.toPrimitive]('number') - b[Symbol.toPrimitive]('number');
+            });
+            setBirthday(inThis.length);
+            return [...inThis, ...inNext];
+        }
+    }, [selectedSort, sortedAndSearchedUsers]);
 
     return (
         <div className="container">
@@ -77,12 +116,12 @@ const MainPage = () => {
                 setSearchQuery={setSearchQuery}
             ></Navigation>
             <Modal
-                setVisible={setModal}
                 visible={modal}
+                setVisible={setModal}
                 selectedSort={selectedSort}
                 setSelectedSort={setSelectedSort}
             ></Modal>
-            { isLoading ? <LoadingList /> : <UserList users={sortedAndSearchedUsers} userDep={userDep}/>}
+            { isLoading ? <LoadingList /> : <UserList users={sortedUsers} selectedSort={selectedSort} userDep={userDep} birthdayInYear={birthdayInYear}/>}
         </div>
     );
 };

@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const UserItem = ({image, id, firstName, lastName, userTag, department}) => {
+const UserItem = ({selectedSort, user, birthdayInYear, image, index, id, firstName, lastName, userTag, department}) => {
+
+    const dateOptions = {month: 'short', day: 'numeric'};
+
     return (
         <li className="app-list__item">
             <div>
@@ -16,7 +19,17 @@ const UserItem = ({image, id, firstName, lastName, userTag, department}) => {
                             <div className="app-list__user-department">{department}</div>
                         </div>
                     </div>
+                    <div className={selectedSort === 'birthday' ? 'app-list__birthday_active' : 'app-list__birthday'}>
+                        {
+                            new Date(user.birthday).toLocaleDateString('ru-RU', dateOptions).slice(0, -1)
+                        }
+                    </div>
                 </Link>
+                <div className={(index === birthdayInYear && selectedSort === 'birthday') ? 'app-list__birth-next' : 'app-list__birth-prev'}>
+                    <div className='app-list__birth-line'></div>
+                    <div className='app-list__birth-year'>2023</div>
+                    <div className='app-list__birth-line'></div>
+                </div>
             </div>
         </li>
     );

@@ -149,4 +149,41 @@ body {
   line-height: 20px;
   color: #97979B;
   background-color: transparent;
+}
+
+.app-list__birthday {
+  display: none;
+}
+
+.app-list__birthday_active {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #55555C;
+}
+
+.app-list__birth-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0px;
+  padding: 24px 0px;
+}
+
+.app-list__birth-prev {
+  display: none;
+}
+
+.app-list__birth-line {
+  width: 100%;
+  max-width: 508px;
+  height: 1px;
+  background-color: #C3C3C6;
+}
+
+.app-list__birth-year {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+  color: #C3C3C6;
 }/*# sourceMappingURL=style.css.map */
