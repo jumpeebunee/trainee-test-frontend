@@ -12,9 +12,10 @@ const MainPage = () => {
 
     const [totalUsers, setTotalUsers] = useState([]);
     const {users, setlAllUsers} = useContext(getAllUsers);
+    const [modal, setModal] = useState(false);
     const [selectedFilter, setSelectedFilter] = useState('all');
     const [selectedSort, setSelectedSort] = useState('firstName');
-    const [modal, setModal] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const userDep = {
         android: 'Android',
@@ -56,6 +57,15 @@ const MainPage = () => {
         return [...totalUsers].filter(prop => prop.department === selectedFilter);
     }, [selectedFilter, totalUsers]);
 
+    const sortedAndSearchedUsers= useMemo(() => {
+        return filteredUsers.filter(user =>  {
+            let firstName = user.firstName.toLowerCase().includes(searchQuery.toLowerCase());
+            let lastName = user.lastName.toLowerCase().includes(searchQuery.toLowerCase());
+            let userTag = user.userTag.toLowerCase().includes(searchQuery.toLowerCase());
+            return (firstName) ? firstName : (lastName) ? lastName : userTag;
+        });
+    }, [searchQuery, filteredUsers])
+
     return (
         <div className="container">
             <Navigation 
@@ -63,6 +73,8 @@ const MainPage = () => {
                 departments={departments}
                 selectedFilter={selectedFilter}
                 setSelectedFilter={setSelectedFilter}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
             ></Navigation>
             <Modal
                 setVisible={setModal}
@@ -70,7 +82,7 @@ const MainPage = () => {
                 selectedSort={selectedSort}
                 setSelectedSort={setSelectedSort}
             ></Modal>
-            { isLoading ? <LoadingList /> : <UserList users={filteredUsers} userDep={userDep}/>}
+            { isLoading ? <LoadingList /> : <UserList users={sortedAndSearchedUsers} userDep={userDep}/>}
         </div>
     );
 };
