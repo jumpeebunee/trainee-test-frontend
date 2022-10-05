@@ -121,7 +121,15 @@ const MainPage = () => {
                 selectedSort={selectedSort}
                 setSelectedSort={setSelectedSort}
             ></Modal>
-            { isLoading ? <LoadingList /> : <UserList users={sortedUsers} selectedSort={selectedSort} userDep={userDep} birthdayInYear={birthdayInYear}/>}
+            { isLoading 
+                ? <LoadingList/>
+                : <UserList 
+                    users={sortedUsers}
+                    selectedSort={selectedSort}
+                    userDep={userDep}
+                    birthdayInYear={birthdayInYear}
+                />
+            }
         </div>
     );
 };

@@ -15,6 +15,7 @@ body {
   margin: 100px auto 0 auto;
   background-color: #fff;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .app-navigation {
@@ -79,7 +80,7 @@ body {
 
 .app-list {
   overflow-y: scroll;
-  height: 564px;
+  height: 560px;
 }
 
 .app-list__item {

@@ -1,11 +1,12 @@
 import React from "react";
 import UserItem from "./UserItem";
+import ErrorFind from "./UI/ErrorFind/ErrorFind";
 
 const UserList = ({users, userDep, selectedSort, birthdayInYear}) => {
 
     if (users.length === 0) {
         return (
-           <h2>Не найдено</h2>
+           <ErrorFind/>
         )
     }
 
