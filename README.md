@@ -37,3 +37,8 @@
 
 ## Запрос, который вернёт ошибку с http кодом 500
 ![image](https://user-images.githubusercontent.com/105386597/194310442-7aa6b386-049a-49d5-a876-53a7b78be1ef.png)
+
+## Запуск проекта:
+```
+npm start
+```
