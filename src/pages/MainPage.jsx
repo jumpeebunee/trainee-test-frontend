@@ -16,9 +16,9 @@ const MainPage = () => {
     const {users, setlAllUsers} = useContext(getAllUsers);
     const [modal, setModal] = useState(false);
     const [birthdayInYear, setBirthday] = useState(0);
-    const [selectedFilter, setSelectedFilter] = useState('all');
-    const [selectedSort, setSelectedSort] = useState('firstName');
-    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedFilter, setSelectedFilter] = useState(localStorage.getItem('filter') ? localStorage.getItem('filter') : 'all');
+    const [selectedSort, setSelectedSort] = useState(localStorage.getItem('sort') ? localStorage.getItem('sort') : 'firstName');
+    const [searchQuery, setSearchQuery] = useState(localStorage.getItem('query') ? localStorage.getItem('query') : '');
     const [checkNetwork, setCheckNetwork] = useState(true);
 
     const [fetchUsers, isLoading, isError] = useFetching(async () => {

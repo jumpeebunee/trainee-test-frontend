@@ -8,6 +8,11 @@ const Modal = ({visible, setVisible, selectedSort, setSelectedSort}) => {
 
     if (visible) rootClasses.push(cl.active);
 
+    const changeSort = (sort) => {
+        setSelectedSort(sort);
+        localStorage.setItem('sort', sort);
+    };
+
     return (
         <div className={rootClasses.join(' ')}>
             <div className={cl.modalContent}>
@@ -16,12 +21,12 @@ const Modal = ({visible, setVisible, selectedSort, setSelectedSort}) => {
                     <span style={{backgroundImage: `url(${close})`}} className={cl.closeModalIcon}></span>
                 </button>
                 <label className={cl.sort__label}>
-                    <input checked={selectedSort === 'firstName'} onChange={(e) => setSelectedSort(e.target.value)} className={cl.sort__radio} type="radio" name="sort" value="firstName"/>
+                    <input checked={selectedSort === 'firstName'} onChange={(e) => changeSort(e.target.value)} className={cl.sort__radio} type="radio" name="sort" value="firstName"/>
                     <span className={cl.sort__value}></span>
                     По алфавиту
                 </label>
                 <label className={cl.sort__label}>
-                    <input onChange={(e) => setSelectedSort(e.target.value)} className={cl.sort__radio} type="radio" name="sort" value="birthday"/>
+                    <input checked={selectedSort === 'birthday'}  onChange={(e) => changeSort(e.target.value)} className={cl.sort__radio} type="radio" name="sort" value="birthday"/>
                     <span className={cl.sort__value}></span>
                     По дню рождения
                 </label>

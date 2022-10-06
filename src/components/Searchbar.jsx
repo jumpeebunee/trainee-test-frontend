@@ -9,7 +9,8 @@ const Searchbar = ({setModal, searchQuery, setSearchQuery}) => {
     const waiting = (e) => {
         clearTimeout(t);
         t = setTimeout((e) => {
-            setSearchQuery(e.target.value);
+            setSearchQuery(e);
+            // localStorage.setItem('query', e);
         }, 500,(e))
     };
 
@@ -17,7 +18,7 @@ const Searchbar = ({setModal, searchQuery, setSearchQuery}) => {
         <div className="app-searchbar">
             <div className="app-searchbar__input">
                 <span style={{backgroundImage: `url(${search})`}} className="app-searchbar__input-icon"></span>
-                <input onChange={(e) => waiting(e)} className="app-searchbar__input-main" placeholder="Введи имя, тег, почту..." type="text"/>
+                <input onChange={(e) => waiting(e.target.value)} className="app-searchbar__input-main" placeholder="Введи имя, тег, почту..." type="text"/>
             </div>
             <button onClick={() => setModal(true)} style={{backgroundImage: `url(${modal})`}} className="app-searchbar__input-icon"></button>
         </div>
