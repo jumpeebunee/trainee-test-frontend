@@ -23,17 +23,37 @@ body {
 }
 
 .container {
-  padding: 20px 15px;
+  padding: 0px 15px;
 }
 
 .app-navigation {
   margin-bottom: 16px;
 }
 .app-navigation h2 {
-  padding: 8px 0px 12px 8px;
+  margin: 8px 0px 12px 8px;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
+}
+.app-navigation p {
+  margin: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #FFFFFF;
+}
+
+.app-navigation__heading_error {
+  color: #FFF;
+}
+
+.app-navigation__head {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.app-navigation__head_error {
+  background-color: #F44336;
 }
 
 .app-searchbar {
@@ -266,6 +286,9 @@ body {
   line-height: 22px;
 }
 
+.user-page__list {
+  padding: 20px 0px;
+}
 .user-page__list li {
   display: flex;
   align-items: center;

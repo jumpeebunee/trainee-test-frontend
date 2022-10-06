@@ -19,14 +19,22 @@ const MainPage = () => {
     const [selectedFilter, setSelectedFilter] = useState('all');
     const [selectedSort, setSelectedSort] = useState('firstName');
     const [searchQuery, setSearchQuery] = useState('');
+    const [checkNetwork, setCheckNetwork] = useState(true);
 
     const [fetchUsers, isLoading, isError] = useFetching(async () => {
         const response = await UsersService.getAll();
         setTotalUsers(response.items);
     });
 
+    const checkUserNetwork = () => {
+        setInterval(() => {
+            (navigator.onLine) ? setCheckNetwork(true) : setCheckNetwork(false);
+        }, 3000);
+    };
+
     useEffect(() => {
         (users === false) ? fetchUsers() : setTotalUsers(users);
+        checkUserNetwork();
     }, []);
 
     const filteredUsers = useMemo(() => {
@@ -87,7 +95,7 @@ const MainPage = () => {
     }, [selectedSort, sortedAndSearchedUsers]);
 
     return (
-        <div className="container">
+        <div className="containerApp">
             <Navigation 
                 setModal={setModal}
                 departments={departmentsType}
@@ -95,6 +103,7 @@ const MainPage = () => {
                 setSelectedFilter={setSelectedFilter}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
+                checkNetwork={checkNetwork}
             ></Navigation>
             <Modal
                 visible={modal}
@@ -102,17 +111,19 @@ const MainPage = () => {
                 selectedSort={selectedSort}
                 setSelectedSort={setSelectedSort}
             ></Modal>
-            { isLoading 
-                ? <LoadingList/>
-                : <UserList 
-                    isError={isError}
-                    fetchUsers={fetchUsers}
-                    users={sortedUsers}
-                    selectedSort={selectedSort}
-                    userDep={departments}
-                    birthdayInYear={birthdayInYear}
-                />
-            }
+            <div className="container">
+                { isLoading 
+                    ? <LoadingList/>
+                    : <UserList 
+                        isError={isError}
+                        fetchUsers={fetchUsers}
+                        users={sortedUsers}
+                        selectedSort={selectedSort}
+                        userDep={departments}
+                        birthdayInYear={birthdayInYear}
+                    />
+                }
+            </div>
         </div>
     );
 };
