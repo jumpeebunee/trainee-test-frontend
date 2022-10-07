@@ -27,7 +27,7 @@ const UserItem = ({selectedSort, user, birthdayInYear, image, index, id, firstNa
                 </Link>
                 <div className={(index === birthdayInYear && selectedSort === 'birthday') ? 'app-list__birth-next' : 'app-list__birth-prev'}>
                     <div className='app-list__birth-line'></div>
-                    <div className='app-list__birth-year'>2023</div>
+                    <div className='app-list__birth-year'>{new Date().getFullYear() + 1}</div>
                     <div className='app-list__birth-line'></div>
                 </div>
             </div>

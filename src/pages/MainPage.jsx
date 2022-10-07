@@ -19,22 +19,35 @@ const MainPage = () => {
     const [selectedFilter, setSelectedFilter] = useState(localStorage.getItem('filter') ? localStorage.getItem('filter') : 'all');
     const [selectedSort, setSelectedSort] = useState(localStorage.getItem('sort') ? localStorage.getItem('sort') : 'firstName');
     const [searchQuery, setSearchQuery] = useState(localStorage.getItem('query') ? localStorage.getItem('query') : '');
-    const [checkNetwork, setCheckNetwork] = useState(true);
+    const [checkNetwork, setCheckNetwork] = useState(window.navigator.onLine);
+    const [networkLoading, setNetworkLoading] = useState(false);
 
     const [fetchUsers, isLoading, isError] = useFetching(async () => {
         const response = await UsersService.getAll();
         setTotalUsers(response.items);
     });
 
-    const checkUserNetwork = () => {
-        setInterval(() => {
-            (navigator.onLine) ? setCheckNetwork(true) : setCheckNetwork(false);
-        }, 3000);
+    const updateNetwork = () => {
+        setCheckNetwork(window.navigator.onLine);
+        if (window.navigator.onLine) {
+            setNetworkLoading(true);
+            setTimeout(() => {
+                setNetworkLoading(false);
+            }, 2000);
+        };
     };
 
     useEffect(() => {
+        window.addEventListener("offline", updateNetwork);
+        window.addEventListener("online", updateNetwork);
+        return () => {
+            window.removeEventListener("offline", updateNetwork);
+            window.removeEventListener("online", updateNetwork);
+        };
+    });
+
+    useEffect(() => {
         (users === false) ? fetchUsers() : setTotalUsers(users);
-        checkUserNetwork();
     }, []);
 
     const filteredUsers = useMemo(() => {
@@ -104,6 +117,7 @@ const MainPage = () => {
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 checkNetwork={checkNetwork}
+                networkLoading={networkLoading}
             ></Navigation>
             <Modal
                 visible={modal}

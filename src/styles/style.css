@@ -54,6 +54,7 @@ body {
 
 .app-navigation__head_error {
   background-color: #F44336;
+  padding-bottom: 36px;
 }
 
 .app-searchbar {

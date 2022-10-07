@@ -8,7 +8,7 @@ const Navigation = ({setModal, departments, selectedFilter, setSelectedFilter, s
             <div className={!checkNetwork ? 'app-navigation__head app-navigation__head_error' : 'app-navigation__head'}>
                 <div className="container">
                     <h2 className={!checkNetwork ? 'app-navigation__heading_error ' : ''}>Поиск</h2>
-                    {!checkNetwork 
+                    {!checkNetwork
                     ? <p className="app-navigation__description">Не могу обновить данные. Проверь соединение с интернетом.</p>
                     : <Searchbar 
                         setModal={setModal}

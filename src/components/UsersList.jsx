@@ -5,6 +5,7 @@ import ErrorMessage from "./UI/ErrorMessage/ErrorMessage";
 
 const UserList = ({users, userDep, selectedSort, birthdayInYear, isError, fetchUsers}) => {
     if (isError) {
+        console.log(isError)
         return (
             <ErrorMessage fetchUsers={fetchUsers}/>
         );
