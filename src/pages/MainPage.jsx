@@ -33,7 +33,8 @@ const MainPage = () => {
             setNetworkLoading(true);
             setTimeout(() => {
                 setNetworkLoading(false);
-            }, 2000);
+                fetchUsers();
+            }, 3000);
         };
     };
 
