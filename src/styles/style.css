@@ -30,7 +30,7 @@ body {
   margin-bottom: 16px;
 }
 .app-navigation h2 {
-  margin: 8px 0px 12px 8px;
+  margin: 0px 0px 16px 8px;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
@@ -48,7 +48,7 @@ body {
 }
 
 .app-navigation__head {
-  padding-top: 20px;
+  padding-top: 18px;
   padding-bottom: 20px;
 }
 
@@ -227,7 +227,7 @@ body {
 }
 
 .user-page__header-container {
-  padding: 32px 32px 24px 23px;
+  padding: 26px 27px 24px 31px;
 }
 
 .user-page__header-link {
@@ -292,7 +292,7 @@ body {
 }
 
 .user-page__list {
-  padding: 20px 0px;
+  padding: 25px 4px 25px 0px;
 }
 .user-page__list li {
   display: flex;
@@ -300,7 +300,7 @@ body {
   justify-content: space-between;
 }
 .user-page__list li:not(:last-child) {
-  margin-bottom: 24px;
+  margin-bottom: 43px;
 }
 
 .user-page__list-info {
@@ -314,12 +314,13 @@ body {
   display: block;
   width: 24px;
   height: 24px;
-  margin-right: 14px;
+  margin-right: 12px;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .user-profile__job {
+  margin-top: 13px;
   font-size: 13px;
   line-height: 16px;
   color: #55555C;
@@ -327,6 +328,9 @@ body {
 
 .user-page__list-age {
   color: #97979B;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 @media (max-width: 500px) {
@@ -351,15 +355,19 @@ body {
     position: relative;
   }
   .container {
-    padding: 5.87vw 4.4vw;
+    padding: 0 4.4vw;
   }
   .app-navigation {
     margin-bottom: 4.69vw;
   }
   .app-navigation h2 {
-    padding: 2.35vw 0px 12px 2.35vw;
+    margin: 0px 0px 4.69vw 2.35vw;
     font-size: 7.04vw;
     line-height: 8.21vw;
+  }
+  .app-navigation__head {
+    padding-top: 5.28vw;
+    padding-bottom: 5.87vw;
   }
   .app-searchbar {
     padding: 2.35vw 12px;
@@ -441,7 +449,7 @@ body {
     line-height: 5.87vw;
   }
   .user-page__header-container {
-    padding: 9.38vw 9.38vw 7.04vw 6.74vw;
+    padding: 7.62vw 7.92vw 7.04vw 9.09vw;
   }
   .user-page__header-link {
     margin-bottom: 9.68vw;
@@ -476,10 +484,14 @@ body {
     font-size: 4.99vw;
     line-height: 6.45vw;
   }
+  .user-page__list {
+    padding: 7.33vw 1.17vw 7.33vw 0px;
+  }
   .user-page__list li:not(:last-child) {
-    margin-bottom: 7.04vw;
+    margin-bottom: 12.61vw;
   }
   .user-profile__job {
+    margin-top: 3.81vw;
     font-size: 3.81vw;
     line-height: 4.69vw;
   }
@@ -491,5 +503,9 @@ body {
     width: 7.04vw;
     height: 7.04vw;
     margin-right: 4.11vw;
+  }
+  .user-page__list-age {
+    font-size: 4.69vw;
+    line-height: 5.87vw;
   }
 }/*# sourceMappingURL=style.css.map */

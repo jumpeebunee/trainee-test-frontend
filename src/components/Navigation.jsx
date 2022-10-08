@@ -2,7 +2,7 @@ import React from "react";
 import Searchbar from "./Searchbar";
 import SortButtons from "./SortButtons";
 
-const Navigation = ({setModal, departments, selectedFilter, setSelectedFilter, searchQuery, setSearchQuery, checkNetwork, networkLoading}) => {
+const Navigation = ({setModal, departments, selectedFilter, setSelectedFilter, setSearchQuery, checkNetwork, networkLoading, value, setValue}) => {
 
     let errorText = 'Не могу обновить данные. Проверь соединение с интернетом.';
     let errClasses = 'app-navigation__head app-navigation__head_error'
@@ -21,8 +21,9 @@ const Navigation = ({setModal, departments, selectedFilter, setSelectedFilter, s
                     ? <p className="app-navigation__description">{errorText}</p>
                     : <Searchbar 
                         setModal={setModal}
-                        searchQuery={searchQuery}
                         setSearchQuery={setSearchQuery}
+                        value={value}
+                        setValue={setValue}
                       ></Searchbar>
                     }
                 </div>
