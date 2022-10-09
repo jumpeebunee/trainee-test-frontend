@@ -5,7 +5,6 @@ import ErrorMessage from "./UI/ErrorMessage/ErrorMessage";
 
 const UserList = ({users, userDep, selectedSort, birthdayInYear, isError, fetchUsers}) => {
     if (isError) {
-        console.log(isError)
         return (
             <ErrorMessage fetchUsers={fetchUsers}/>
         );
@@ -15,6 +14,11 @@ const UserList = ({users, userDep, selectedSort, birthdayInYear, isError, fetchU
         return (
            <ErrorFind/>
         )
+    };
+
+    const getUserDepartment = (value) => {
+        const userDepartment = userDep.find(item => item.value === value);
+        return userDepartment.title;
     };
 
     return (
@@ -28,7 +32,7 @@ const UserList = ({users, userDep, selectedSort, birthdayInYear, isError, fetchU
                 firstName={user.firstName}
                 lastName={user.lastName}
                 userTag={user.userTag === 'string' ? '' : user.userTag}
-                department={userDep[user.department]}
+                department={getUserDepartment(user.department)}
                 selectedSort={selectedSort}
                 birthdayInYear={birthdayInYear}
             ></UserItem>)}

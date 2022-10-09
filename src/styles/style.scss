@@ -157,6 +157,11 @@ body {
 .app-navigation__list {
     display: flex;
     align-items: center;
+    overflow-y: scroll;
+
+    li {
+        flex-shrink: 0;
+    }
 
     .active {
         font-weight: 600;
@@ -405,6 +410,7 @@ body {
     .app-searchbar__input-main {
         height: 5.87vw;
         margin-left: 2.35vw;
+        font-size: 4.40vw;
     
         &::placeholder {
             font-size: 4.40vw;

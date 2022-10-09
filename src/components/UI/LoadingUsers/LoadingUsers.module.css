@@ -29,3 +29,29 @@
     background: linear-gradient(90deg, #F3F3F6 0%, #FAFAFA 100%);
     border-radius: 50px;
 }
+
+@media (max-width: 341px) {
+    .loadingItem:not(:last-child) {
+        margin-bottom: 3.52vw;
+    }
+    
+    .loadingImage {
+        width: 21.11vw;
+        height: 21.11vw;
+        margin-right: 4.69vw;
+        border-radius: 14.66vw;
+    }
+    
+    .loadingName {
+        width: 42.23vw;
+        height: 4.69vw;
+        border-radius: 14.66vw;
+    }
+    
+    .loadingAbout {
+        width: 23.46vw;
+        height: 3.52vw;
+        margin-top: 1.76vw;
+        border-radius: 14.66vw;
+    }
+}

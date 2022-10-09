@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAllUsers } from "../context";
 import UserProfile from "../components/UserProfile";
-import UserInfoList from "../components/UserInfoList"
-import departments from "../data/departments"
+import UserInfoList from "../components/UserInfoList";
+import departments from "../data/departments";
 import back from '../img/back.svg';
 
 const UserPage = () => {
@@ -61,6 +61,13 @@ const UserPage = () => {
         );
     };
 
+    const getUserDepartment = (value) => {
+        if (value) {
+            const userDepartment = departments.find(item => item.value === value);
+            return userDepartment.title;
+        } 
+    };
+
     return (
         <div className="user-page">
             <div className="user-page__header">
@@ -71,7 +78,7 @@ const UserPage = () => {
                     <UserProfile 
                         username={user.firstName + ' ' + user.lastName}
                         tag={user.userTag === 'string' ? '' : user.userTag}
-                        department={departments[user.department]}
+                        department={getUserDepartment(user.department)}
                         image={user.avatarUrl + `&t=${user.id}`}
                     ></UserProfile>
                 </div>

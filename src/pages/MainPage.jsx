@@ -3,7 +3,6 @@ import { useContext, useMemo } from "react";
 import { getAllUsers } from "../context";
 import { useFetching } from "../hooks/useFetching";
 import departments from "../data/departments";
-import departmentsType from "../data/departmentsType";
 import UsersService from "../API/UsersService";
 import Navigation from "../components/Navigation";
 import UserList from "../components/UsersList";
@@ -113,7 +112,7 @@ const MainPage = () => {
         <div className="containerApp">
             <Navigation 
                 setModal={setModal}
-                departments={departmentsType}
+                departments={departments}
                 selectedFilter={selectedFilter}
                 setSelectedFilter={setSelectedFilter}
                 setSearchQuery={setSearchQuery}

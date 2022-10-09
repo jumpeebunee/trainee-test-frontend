@@ -49,6 +49,8 @@
     display: block;
     width: 10px;
     height: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .sort__label {
@@ -87,4 +89,56 @@
 
 .sort__radio:checked~.sort__value  {
     border: solid 6px #6534FF;
+}
+
+@media (max-width: 341px) {
+    .modalContent {
+        max-width: 109.38vw;
+        padding: 7.04vw 6.74vw 8.21vw 4.69vw;
+        border-radius: 4.69vw;
+    }
+    
+    .modalHeading {
+        margin-bottom: 10.56vw;
+        font-size: 5.87vw;
+        line-height: 7.04vw;
+    }
+    
+    .closeModal {
+        width: 7.04vw;
+        height: 7.04vw;
+        right: 7.04vw;
+        top: 6.74vw;
+    }
+    
+    .closeModalIcon {
+        width: 2.93vw;
+        height: 2.93vw;
+    }
+    
+    .sort__label {
+        font-size: 4.69vw;
+        line-height: 5.87vw;
+    }
+    
+    .sort__label:not(:last-child) {
+        margin-bottom: 11.44vw;
+    }
+    
+    .sort__radio {
+        width: 0.29vw;
+        height: 0.29vw;
+        margin: -0.29vw;
+    }
+    
+    .sort__value {
+        width: 5.87vw;
+        height: 5.87vw;
+        margin-right: 4.11vw;
+        border: solid 0.59vw #6534FF;
+    }
+    
+    .sort__radio:checked~.sort__value  {
+        border: solid 1.76vw #6534FF;
+    }
 }

@@ -11,6 +11,8 @@
     display: block;
     width: 56px;
     height: 56px;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .errorMessageHeading {
@@ -27,4 +29,29 @@
     font-size: 16px;
     line-height: 20px;
     color: #97979B;
+}
+
+@media (max-width: 341px) {
+
+    .errorMessageActive {
+        padding-top: 39.00vw;
+        padding-bottom: 39.00vw;
+    }
+    
+    .errorMessageImg {
+        width: 16.42vw;
+        height: 16.42vw;
+    }
+    
+    .errorMessageHeading {
+        margin-top: 2.35vw;
+        font-size: 4.99vw;
+        line-height: 6.45vw;
+    }
+    
+    .errorMessageDescription {
+        margin-top: 3.52vw;
+        font-size: 4.69vw;
+        line-height: 5.87vw;
+    }
 }
