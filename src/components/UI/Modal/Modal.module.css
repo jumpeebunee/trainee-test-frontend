@@ -1,11 +1,16 @@
 .modal {
-    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    display: none;
-    background-color: rgba(5, 5, 16, 0.16);;
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgba(5, 5, 16, 0.16);
+    transition: all .4s ease;
 }
 
 .modalContent {
@@ -18,9 +23,8 @@
 }
 
 .modal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    visibility: visible;
+    opacity: 1;
 }
 
 .modalHeading {
