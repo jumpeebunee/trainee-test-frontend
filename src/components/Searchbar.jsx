@@ -2,24 +2,22 @@ import React from "react";
 import search from '../img/search.svg';
 import modal from "../img/modal.svg";
 
-const Searchbar = ({setModal, setSearchQuery, value, setValue}) => {
+const Searchbar = ({setModal, setSearchQuery, value}) => {
 
     let t = 0;
 
     const waiting = (e) => {
         clearTimeout(t);
-        setValue(e);
-        localStorage.setItem('query', e);
         t = setTimeout((e) => {
             setSearchQuery(e);
-        }, 500,(e))
+        }, 500, (e));
     };
 
     return (
         <div className="app-searchbar">
             <div className="app-searchbar__input">
                 <span style={{backgroundImage: `url(${search})`}} className="app-searchbar__input-icon"></span>
-                <input onChange={(e) => waiting(e.target.value)} value={value} className="app-searchbar__input-main" placeholder="Введи имя, тег, почту..." type="text"/>
+                <input onChange={(e) => waiting(e.target.value)} className="app-searchbar__input-main" placeholder="Введи имя, тег, почту..." type="text"/>
             </div>
             <button onClick={() => setModal(true)} style={{backgroundImage: `url(${modal})`}} className="app-searchbar__input-icon"></button>
         </div>

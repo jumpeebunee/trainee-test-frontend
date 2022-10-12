@@ -18,7 +18,6 @@ const MainPage = () => {
     const [selectedFilter, setSelectedFilter] = useState(localStorage.getItem('filter') ? localStorage.getItem('filter') : 'all');
     const [selectedSort, setSelectedSort] = useState(localStorage.getItem('sort') ? localStorage.getItem('sort') : 'firstName');
     const [searchQuery, setSearchQuery] = useState(localStorage.getItem('query') ? localStorage.getItem('query') : '');
-    const [searchValue, setSearchValue] = useState(localStorage.getItem('query') ? localStorage.getItem('query') : '');
     const [checkNetwork, setCheckNetwork] = useState(window.navigator.onLine);
     const [networkLoading, setNetworkLoading] = useState(false);
 
@@ -33,6 +32,7 @@ const MainPage = () => {
             setNetworkLoading(true);
             setTimeout(() => {
                 setNetworkLoading(false);
+                setSearchQuery('');
                 fetchUsers();
             }, 3000);
         };
@@ -118,8 +118,7 @@ const MainPage = () => {
                 setSearchQuery={setSearchQuery}
                 checkNetwork={checkNetwork}
                 networkLoading={networkLoading}
-                value={searchValue}
-                setValue={setSearchValue}
+                value={searchQuery}
             ></Navigation>
             <Modal
                 visible={modal}

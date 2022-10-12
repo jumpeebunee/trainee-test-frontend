@@ -9,7 +9,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0;
+  width: 0px;
 }
 
 .app {
@@ -117,7 +117,7 @@ body {
 
 .app-list {
   overflow-y: scroll;
-  height: 560px;
+  height: 520px;
 }
 
 .app-list__item {
@@ -417,7 +417,7 @@ body {
     line-height: 5.87vw;
   }
   .app-list {
-    height: 164.22vw;
+    height: 152.49vw;
   }
   .app-list__item {
     margin-bottom: 1.17vw;
